@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, BackHandler } from 'react-native'
+import { Text, View, BackHandler, Dimensions } from 'react-native'
 import { addNavigationHelpers, NavigationActions } from 'react-navigation'
 
 import AppNavigator from './AppNavigator'
@@ -11,11 +11,15 @@ export default class Main extends React.Component {
         super(props)
     }
 
+    onOrientationChange = () => this.props.dimensionsChanged()
+
     componentDidMount() {
         BackHandler.addEventListener("hardwareBackPress", this.onBackPress)
+        Dimensions.addEventListener('change', this.onOrientationChange)
     }
 
     componentWillUnmount() {
+        Dimensions.removeEventListener('change', this.onOrientationChange)
         BackHandler.removeEventListener("hardwareBackPress", this.onBackPress)
     }
 

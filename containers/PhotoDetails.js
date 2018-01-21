@@ -1,9 +1,10 @@
 import { connect } from 'react-redux'
-import { deselectPhoto } from '../actions'
+import { backToList } from '../actions'
 import PhotoDetails from '../components/PhotoDetails'
 
-function mapStateToProps({selectedPhoto}) {
-    return { photo: selectedPhoto }
+function mapStateToProps({selectedPhoto, dimensions}) {
+    const { height } = dimensions
+    return { photo: selectedPhoto, dimensions: { height } }
 }
 
-export default connect(mapStateToProps, { deselectPhoto })(PhotoDetails)
+export default connect(mapStateToProps, { backToList })(PhotoDetails)

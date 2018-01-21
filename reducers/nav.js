@@ -4,6 +4,5 @@ const initialState = AppNavigator.router.getStateForAction(AppNavigator.router.g
 
 export default function navReducer(state = initialState, action) {
   const nextState = AppNavigator.router.getStateForAction(action, state)
-  //alert(JSON.stringify(nextState))
   return nextState || state
 }

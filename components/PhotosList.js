@@ -18,6 +18,7 @@ export default class PhotosList extends React.Component {
         return <PhotoListItem onPress={() => this.props.selectPhoto(item)} key={item.id} item={item} itemSize={itemSize} />
     }
 
+
     render() {
         return <PhotoGrid
                 data = { this.props.photos }
